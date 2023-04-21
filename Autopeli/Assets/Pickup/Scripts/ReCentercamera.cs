@@ -19,7 +19,7 @@ public class ReCentercamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("ReCenterCamera") != 1)
+        if (Input.GetAxis("ReCenterCamera") == 1)
         {
             camera1.m_RecenterToTargetHeading.m_enabled = true;
             camera1.m_YAxisRecentering.m_enabled=true;
