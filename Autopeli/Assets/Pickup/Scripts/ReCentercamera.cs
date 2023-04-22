@@ -21,13 +21,13 @@ public class ReCentercamera : MonoBehaviour
     {
         if (Input.GetAxis("ReCenterCamera") == 1)
         {
-            camera1.m_RecenterToTargetHeading.m_enabled = true;
-            camera1.m_YAxisRecentering.m_enabled=true;
+            camera1.m_RecenterToTargetHeading.m_enabled = false;
+            camera1.m_YAxisRecentering.m_enabled = false;
         }
         else
         {
-            camera1.m_RecenterToTargetHeading.m_enabled = false;
-            camera1.m_YAxisRecentering.m_enabled = false;
+            camera1.m_RecenterToTargetHeading.m_enabled = true;
+            camera1.m_YAxisRecentering.m_enabled = true;
         }
     }
 }
