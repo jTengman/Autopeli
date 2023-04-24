@@ -37,6 +37,14 @@ public class WheelController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.R))
+        {
+            currentAcceleration = 0f;
+            currentBreakForce = 0f;
+            currentTurnAngle = 0f;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
         currentAcceleration = acceleration * Input.GetAxis("Vertical");
 
         Braking();

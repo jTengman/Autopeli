@@ -6,11 +6,13 @@ public class Checkpoint : MonoBehaviour
 {
 
     Vector3 spawnPoint;
+    Quaternion spawnRotation;
 
    
     void Start()
     {
         spawnPoint = gameObject.transform.position;
+        spawnRotation = gameObject.transform.rotation;
     }
 
     private void Update()
@@ -18,6 +20,7 @@ public class Checkpoint : MonoBehaviour
         if(Input.GetKey(KeyCode.R))
         {
             gameObject.transform.position = spawnPoint;
+            gameObject.transform.rotation = spawnRotation;
         }
     }
 
@@ -26,6 +29,7 @@ public class Checkpoint : MonoBehaviour
         if(other.gameObject.CompareTag("CheckPoint"))
         {
             spawnPoint = other.gameObject.transform.position;
+            spawnRotation = other.gameObject.transform.rotation;
             Destroy(other.gameObject);
         }
     }
