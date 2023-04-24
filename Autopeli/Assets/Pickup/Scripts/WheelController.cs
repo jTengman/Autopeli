@@ -17,8 +17,11 @@ public class WheelController : MonoBehaviour
     Rigidbody rb;
 
     public float acceleration = 300f;
+    public float maxSpeed = 20f;
+
     public float breakingForce = 500f;
     public float maxTurnAngle = 15f;
+    
 
     private float currentAcceleration = 0f;
     private float currentBreakForce = 0f;
@@ -39,7 +42,7 @@ public class WheelController : MonoBehaviour
         Braking();
 
         // Acceleration with rear wheels
-        if(rb.velocity.magnitude > 20 || rb.velocity.magnitude < -20)
+        if(rb.velocity.magnitude > maxSpeed || rb.velocity.magnitude < -maxSpeed)
         {
             backRight.motorTorque = 0f;
             backLeft.motorTorque = 0f; 

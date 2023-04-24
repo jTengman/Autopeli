@@ -10,27 +10,36 @@ public class GameManager : MonoBehaviour
     private bool timerStarted;
     private bool timer;
     public float curTime;
+    public LevelTimes leveltimes;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI starText;
     public TextMeshProUGUI levelCompleteText;
-    private int starsCollected;
+    public TextMeshProUGUI PBText;
+    public TextMeshProUGUI GoldText;
+    public TextMeshProUGUI SilverText;
+    public TextMeshProUGUI BronzeText;
+    private int money;
     public UnityEvent<GameManager> OnStarCollected;
     // Start is called before the first frame update
     void Start()
     {
         //starText = GetComponent<TextMeshProUGUI>();
-        starsCollected = 0;
-        starText.text = starsCollected.ToString();
+        money = 0;
+        starText.text = money.ToString();
         timerStarted = false;
         timer = false;
         curTime = 0.0f;
+        GoldText.text = FormatTime(leveltimes.GoldTime);
+        SilverText.text = FormatTime(leveltimes.SilverTime);
+        BronzeText.text = FormatTime(leveltimes.BronzeTime);
+        PBText.text = FormatTime(leveltimes.PBTime);
         UpdateTimer();
     }
 
     public void StarCollected()
     {
-        starsCollected++;
-        starText.text = starsCollected.ToString();
+        money += 100;
+        starText.text = money.ToString();
         OnStarCollected.Invoke(this);
     }
 
@@ -49,11 +58,16 @@ public class GameManager : MonoBehaviour
     }
     private void UpdateTimer()
     {
+        timerText.text = FormatTime(curTime);
+    }
+
+    private string FormatTime(float time)
+    {
         string timeString;
-        int mins = (int)curTime / 60 % 60;
+        int mins = (int)time / 60 % 60;
         float secs = curTime % 60;
         timeString = mins + ":" + secs.ToString("00.000"); // .Replace(",",":")
-        timerText.text = timeString;
+        return timeString;
     }
 
     public void LevelComplete()
