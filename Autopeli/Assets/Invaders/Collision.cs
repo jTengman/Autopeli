@@ -5,12 +5,11 @@ using UnityEngine;
 public class Collision : MonoBehaviour
 {
     public ParticleSystem blood;
-    bool touch = false;
-    
+    public AudioSource HittingSound;
     void isTouched()
     {
         Instantiate(blood, transform.position, transform.rotation);
-        touch = false;
+        Instantiate(HittingSound, transform.position, transform.rotation);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +18,6 @@ public class Collision : MonoBehaviour
             isTouched();
             gameObject.SetActive(false);
             print("collision");
-            touch = true;
         }
 
     }
