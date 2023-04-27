@@ -6,7 +6,7 @@ public class Star : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameManager gm = other.GetComponent<GameManager>();
-        gm.StarCollected();
+        //gm.StarCollected();
         gameObject.SetActive(false);
     }
 }

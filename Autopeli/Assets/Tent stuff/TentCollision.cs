@@ -13,6 +13,8 @@ public class TentCollision : MonoBehaviour
     {
         if (other.name == "PickUp_Damaged")
         {
+            GameManager gm = other.GetComponent<GameManager>();
+            gm.TentHit();
             Main();
             Instantiate(CrashSound, transform.position, transform.rotation);
             //gameObject.SetActive(false);
@@ -49,10 +51,5 @@ public class TentCollision : MonoBehaviour
 
         Rigidbody rb = cube.AddComponent<Rigidbody>();
         rb.AddExplosionForce(force, transform.position, radius);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
