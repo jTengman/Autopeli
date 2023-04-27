@@ -52,7 +52,7 @@ public class MainMenu : MonoBehaviour
     public void IncreaseMaxSpeed()
     {
         int index = PlayerPrefs.GetInt("MaxSpeedIndex");
-        if (Money > Costs[index] && index < MaxSpeeds.Length-1)
+        if (Money >= Costs[index] && index < MaxSpeeds.Length-1)
         {
             Money -= Costs[index];
             PlayerPrefs.SetInt("Money", Money);
@@ -76,7 +76,7 @@ public class MainMenu : MonoBehaviour
     public void IncreaseAcceleration()
     {
         int index = PlayerPrefs.GetInt("AccelerationIndex");
-        if (Money > Costs[index] && index<Accelerations.Length-1)
+        if (Money >= Costs[index] && index<Accelerations.Length-1)
         {
             Money -= Costs[index];
             PlayerPrefs.SetInt("Money", Money);
