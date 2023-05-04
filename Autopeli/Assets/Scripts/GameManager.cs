@@ -47,12 +47,25 @@ public class GameManager : MonoBehaviour
         timerStarted = false;
         timer = false;
         curTime = 0.0f;
+        InfoText.gameObject.SetActive(true);
         GoldText.text = FormatTime(leveltimes.GoldTime);
         SilverText.text = FormatTime(leveltimes.SilverTime);
         BronzeText.text = FormatTime(leveltimes.BronzeTime);
-        PBText.text = FormatTime(PlayerPrefs.GetFloat("PB"));
-        InfoText.gameObject.SetActive(true);
-        InfoText.text = "Controls: \n W - Drive forward \n A - Turn Left\n D - Turn Right \nS - Drive backwards \nSpace - Brake\n R - Reset car to last Checkpoint" ;
+        if (SceneManager.GetActiveScene().buildIndex.Equals(1))
+        {
+            PBText.text = FormatTime(PlayerPrefs.GetFloat("PB1"));
+            InfoText.text = "Controls: \n W - Drive forward \n A - Turn Left\n D - Turn Right \nS - Drive backwards \nSpace - Brake\n R - Reset car to last Checkpoint";
+        }
+        else if (SceneManager.GetActiveScene().buildIndex.Equals(2))
+        {
+            PBText.text = FormatTime(PlayerPrefs.GetFloat("PB2"));
+            InfoText.text = "Hint:\nAs your truck gets more powerful,\nit also becomes harder to control.\nGetting the best time might be easier\nwith less powerful truck";
+        }
+        else if (SceneManager.GetActiveScene().buildIndex.Equals(3))
+        {
+            PBText.text = FormatTime(PlayerPrefs.GetFloat("PB3"));
+            InfoText.text = "Hint:\nThere might be hidden ramps\n or passages\n in some levels.";
+        }
         UpdateTimer();
     }
 
@@ -127,11 +140,31 @@ public class GameManager : MonoBehaviour
             {
                 InfoText.text = "Level Complete! \n You got a Bronze Medal! \nCongratulations!";
             }
-            if (curTime < PlayerPrefs.GetFloat("PB") || !PlayerPrefs.HasKey("PB"))
+            if (SceneManager.GetActiveScene().buildIndex.Equals(1))
             {
-                InfoText.text += "\n\nNew Personal Best!!! Wow!!";
-                PlayerPrefs.SetFloat("PB", curTime);
+                if (curTime < PlayerPrefs.GetFloat("PB1") || !PlayerPrefs.HasKey("PB1"))
+                {
+                    InfoText.text += "\n\nNew Personal Best!!! Wow!!";
+                    PlayerPrefs.SetFloat("PB1", curTime);
+                }
             }
+            if (SceneManager.GetActiveScene().buildIndex.Equals(2))
+            {
+                if (curTime < PlayerPrefs.GetFloat("PB2") || !PlayerPrefs.HasKey("PB2"))
+                {
+                    InfoText.text += "\n\nNew Personal Best!!! Wow!!";
+                    PlayerPrefs.SetFloat("PB2", curTime);
+                }
+            }
+            if (SceneManager.GetActiveScene().buildIndex.Equals(3))
+            {
+                if (curTime < PlayerPrefs.GetFloat("PB3") || !PlayerPrefs.HasKey("PB3"))
+                {
+                    InfoText.text += "\n\nNew Personal Best!!! Wow!!";
+                    PlayerPrefs.SetFloat("PB3", curTime);
+                }
+            }
+
             InfoText.gameObject.SetActive(true);
             StartCoroutine(EndLevel());
         }

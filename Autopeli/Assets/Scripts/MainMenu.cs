@@ -30,9 +30,9 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("AccelerationIndex", 0);
         }
         
-        MaxSpeeds =     new float[]  { 20f,     22f,    24f,    26f,    28f,    30f };
-        Accelerations = new float[]  { 200f,   250f,   300f,   350f,   400f,    450f };
-        Costs =          new int[]   { 1000,    1100,   1200,   1300,   1400,   9999 };
+        MaxSpeeds =     new float[]  {  24f,    26f,    28f,    30f,    32f,    34f,    36f,    38f,    40f };
+        Accelerations = new float[]  { 300f,    325f,  350f,   375f,   400f,   425f,    450f,   475f,   500f };
+        Costs =          new int[]   { 200,   400,     800,    1200,    1400,   1600,   1800,   2000,   9999 };
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         UpdateValues();
